@@ -1,5 +1,7 @@
 import Head from 'next/head'
+import HomePage from '@/components/home'
 import Header from '@/components/header'
+import Footer from '@/components/footer'
 export default function Home() {
   return (
     <>
@@ -17,8 +19,9 @@ export default function Home() {
       <div className=''>
         <Header />
         <main className='main'>
-          <h1>Ilu ati orin</h1>
+          <HomePage />
         </main>
+        <Footer />
       </div>
     </>
   )

@@ -1,10 +1,35 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useContextValue } from './context/userContext'
+
 const LoginPage = () => {
-  const [username, setUserName] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassWord] = useState('')
-  const handleClick = (e) => {
+  const [redirect, setRedirect] = useState(false)
+  const { userInfo, setUserInfo } = useContextValue()
+  const router = useRouter()
+  const handleClick = async (e) => {
     e.preventDefault()
+    const response = await fetch('/api/login', {
+      method: 'POST',
+      body: JSON.stringify({ email, password }),
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+    })
+
+    if (response.ok) {
+      response.json().then((userInfo) => {
+        setUserInfo(userInfo)
+        setRedirect(true)
+      })
+    } else {
+      alert('wrong credentials')
+    }
+  }
+
+  if (redirect) {
+    router.push('/')
   }
 
   return (
@@ -16,18 +41,18 @@ const LoginPage = () => {
           <span className='text-accentPrimary'>Create Account</span>
         </Link>
       </p>
-      <label className='label'>Name</label>
+      <label className='label'>Email</label>
       <input
-        type='text'
-        placeholder='username'
-        value={username}
-        onChange={(e) => setUserName(e.target.value)}
+        type='email'
+        placeholder='Enter email address'
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
         className='inp'
       />
       <label className='label'>Password</label>
       <input
         type='password'
-        placeholder='password'
+        placeholder='Enter password'
         value={password}
         onChange={(e) => setPassWord(e.target.value)}
         className='inp'
@@ -35,7 +60,7 @@ const LoginPage = () => {
       <p className='text-end text-accentPrimary my-3'>
         <Link href='/recovery'>Forgot Password?</Link>
       </p>
-      <button onClick={handleClick} className='form-btn mt-3'>
+      <button onClick={handleClick} className='form-btn mt-2'>
         Submit
       </button>
     </form>

@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Header from '@/components/header'
 import RegisterPage from '@/components/register'
+import Footer from '@/components/footer'
 export default function Register() {
   return (
     <>
@@ -20,6 +21,7 @@ export default function Register() {
         <main className='main'>
           <RegisterPage />
         </main>
+        <Footer />
       </div>
     </>
   )

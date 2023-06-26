@@ -24,7 +24,7 @@ const RegisterPage = () => {
           <span className='text-[#FF6B6B]'>Login</span>
         </Link>
       </p>
-      <label className='label'>username</label>
+      <label className='label'>Username</label>
       <input
         type='text'
         placeholder='Enter username'
@@ -34,7 +34,7 @@ const RegisterPage = () => {
         onChange={(e) => setUsername(e.target.value)}
         className='inp'
       />
-      <label className='label'>email</label>
+      <label className='label'> Email</label>
       <input
         type='email'
         placeholder='Enter email address'
@@ -54,7 +54,7 @@ const RegisterPage = () => {
         onChange={(e) => setPassWord(e.target.value)}
         className='inp'
       />
-      <button className='form-btn'>Submit</button>
+      <button className='form-btn mt-3'>Submit</button>
     </form>
   )
 }

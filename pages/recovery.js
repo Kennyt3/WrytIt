@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Header from '@/components/header'
-import RegisterPage from '@/components/register'
+import RegisterPage from '@/components/login'
 export default function Recovery() {
   return (
     <>

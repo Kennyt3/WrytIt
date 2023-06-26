@@ -1,14 +1,22 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 const RegisterPage = () => {
-  const [username, setUserName] = useState('')
+  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassWord] = useState('')
-  const handleClick = (e) => {
+  const handleClick = async (e) => {
     e.preventDefault()
+    const response = await fetch('/api/register', {
+      method: 'POST',
+      body: JSON.stringify({ username, password, email }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
   }
 
   return (
-    <form className='register'>
+    <form className='login px-3' onSubmit={handleClick}>
       <h1 className='header'>Create New Account</h1>
       <p className='text-center text-[18px]'>
         Already have an account?{' '}
@@ -16,25 +24,37 @@ const RegisterPage = () => {
           <span className='text-[#FF6B6B]'>Login</span>
         </Link>
       </p>
-      <label className='label'>Name</label>
+      <label className='label'>username</label>
       <input
         type='text'
-        placeholder='username'
+        placeholder='Enter username'
+        autoComplete='on'
         value={username}
-        onChange={(e) => setUserName(e.target.value)}
+        required
+        onChange={(e) => setUsername(e.target.value)}
+        className='inp'
+      />
+      <label className='label'>email</label>
+      <input
+        type='email'
+        placeholder='Enter email address'
+        autoComplete='on'
+        value={email}
+        required
+        onChange={(e) => setEmail(e.target.value)}
         className='inp'
       />
       <label className='label'>Password</label>
       <input
         type='password'
-        placeholder='password'
+        placeholder='Enter password'
+        autoComplete='on'
         value={password}
+        required
         onChange={(e) => setPassWord(e.target.value)}
         className='inp'
       />
-      <button onClick={handleClick} className='form-btn mt-3'>
-        Submit
-      </button>
+      <button className='form-btn'>Submit</button>
     </form>
   )
 }

@@ -1,4 +1,6 @@
 const mongoose = require('mongoose')
+const UserModel = require('./model/User')
+const bcrypt = require('bcryptjs')
 
 export default async function handler(req, res) {
   mongoose
@@ -10,9 +12,20 @@ export default async function handler(req, res) {
     .catch((err) => {
       console.log(err)
     })
-  res.status(200).json({ name: 'John Doe' })
+  var salt = bcrypt.genSaltSync(10)
   if (req.method === 'POST') {
-    const { username, password } = req.body
-    console.log(username, password)
+    const { username, password, email } = req.body
+    try {
+      const userDoc = new UserModel({
+        username,
+        email,
+        password: bcrypt.hashSync(password, salt),
+      })
+      userDoc.save()
+      res.status(200).json(userDoc)
+    } catch (e) {
+      res.status(500).json(e)
+      console.log(UserModel)
+    }
   }
 }

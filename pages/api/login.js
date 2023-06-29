@@ -19,17 +19,44 @@ export default async function handler(req, res) {
     const userDoc = await UserModel.findOne({ email })
     const passed = bcrypt.compareSync(password, userDoc.password)
     if (passed) {
-      jwt.sign({ email, id: userDoc._id }, secret, {}, (err, token) => {
-        if (err) throw err
-        res.cookie('token', token).json({
-          id: userDoc._id,
-          username: userDoc.username,
-          email,
+      jwt.sign(
+        { firstname: userDoc.firstName, admin: passed },
+        secret,
+        {},
+        (err, token) => {
+          if (err) throw err
+          res.cookie('token', token)
+        }
+        // {
+        //   expiresIn: 600000,
+        // }
+      ),
+        res.json({
+          name: userDoc.firstName,
         })
-      })
-      res.status(200).json('Done')
     } else {
-      res.status(400).json('wrong credentials')
+      res.status(400).json('Invalid Password')
     }
   }
 }
+
+// if (passed) {
+//   res.json({
+//     token: jwt.sign(
+//       { username: userDoc.username, admin: passed },
+//       secret
+//       // (err, token) => {
+//       //   if (err) throw err
+//       //   res.cookie('token', token).json({
+//       //     id: userDoc._id,
+//       //     username: userDoc.username,
+//       //     email,
+//       //   })
+//       // }
+//     ),
+//     admin: passed,
+//     username: userDoc.username,
+//   })
+// } else {
+//   res.status(400).json('wrong credentials')
+// }

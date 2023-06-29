@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useContextValue } from './context/userContext'
 const HomePage = () => {
-  const { userInfo } = useContextValue()
+  const { loggedIn, userInfo } = useContextValue()
+  // useEffect(() => {
+  //   console.log(loggedIn, userInfo)
+  // }, [loggedIn, userInfo])
   return (
     <div>
-      {userInfo ? (
+      {loggedIn ? (
         <>
           <h1>Congrats, signed in</h1>
         </>

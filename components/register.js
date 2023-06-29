@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 const RegisterPage = () => {
-  const [username, setUsername] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [firstName, setFirstName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassWord] = useState('')
   const handleClick = async (e) => {
     e.preventDefault()
     const response = await fetch('/api/register', {
       method: 'POST',
-      body: JSON.stringify({ username, password, email }),
+      body: JSON.stringify({ firstName, lastName, password, email }),
       headers: {
         'Content-Type': 'application/json',
       },
@@ -24,14 +25,24 @@ const RegisterPage = () => {
           <span className='text-[#FF6B6B]'>Login</span>
         </Link>
       </p>
-      <label className='label'>Username</label>
+      <label className='label'>First name</label>
       <input
         type='text'
         placeholder='Enter username'
         autoComplete='on'
-        value={username}
+        value={firstName}
         required
-        onChange={(e) => setUsername(e.target.value)}
+        onChange={(e) => setFirstName(e.target.value)}
+        className='inp'
+      />
+      <label className='label'>Last name</label>
+      <input
+        type='text'
+        placeholder='Enter username'
+        autoComplete='on'
+        value={lastName}
+        required
+        onChange={(e) => setLastName(e.target.value)}
         className='inp'
       />
       <label className='label'> Email</label>

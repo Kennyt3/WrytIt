@@ -14,14 +14,17 @@ export default async function handler(req, res) {
     })
   var salt = bcrypt.genSaltSync(10)
   if (req.method === 'POST') {
-    const { username, password, email } = req.body
+    const { firstName, lastName, password, email } = req.body
+    console.log(firstName, lastName)
     try {
       const userDoc = new UserModel({
-        username,
+        firstName,
+        lastName,
         email,
         password: bcrypt.hashSync(password, salt),
       })
       userDoc.save()
+      console.log(userDoc)
       res.status(200).json(userDoc)
     } catch (e) {
       res.status(500).json(e)

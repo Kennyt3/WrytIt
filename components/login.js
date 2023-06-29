@@ -6,8 +6,7 @@ import { useContextValue } from './context/userContext'
 const LoginPage = () => {
   const [email, setEmail] = useState('')
   const [password, setPassWord] = useState('')
-  const [redirect, setRedirect] = useState(false)
-  const { userInfo, setUserInfo } = useContextValue()
+  const { loggedIn, setUserInfo, setLoggedIn } = useContextValue()
   const router = useRouter()
   const handleClick = async (e) => {
     e.preventDefault()
@@ -17,23 +16,22 @@ const LoginPage = () => {
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
     })
-
     if (response.ok) {
       response.json().then((userInfo) => {
         setUserInfo(userInfo)
-        setRedirect(true)
+        setLoggedIn(true)
       })
     } else {
       alert('wrong credentials')
     }
   }
 
-  if (redirect) {
+  if (loggedIn) {
     router.push('/')
   }
 
   return (
-    <form className='register'>
+    <form className='register' onSubmit={handleClick}>
       <h1 className='header'>Login To Your Account</h1>
       <p className='text-center text-[18px]'>
         Don't have an account?{' '}
@@ -46,6 +44,8 @@ const LoginPage = () => {
         type='email'
         placeholder='Enter email address'
         value={email}
+        required
+        autoComplete='on'
         onChange={(e) => setEmail(e.target.value)}
         className='inp'
       />
@@ -54,15 +54,15 @@ const LoginPage = () => {
         type='password'
         placeholder='Enter password'
         value={password}
+        required
+        autoComplete='on'
         onChange={(e) => setPassWord(e.target.value)}
         className='inp'
       />
       <p className='text-end text-accentPrimary my-3'>
         <Link href='/recovery'>Forgot Password?</Link>
       </p>
-      <button onClick={handleClick} className='form-btn mt-2'>
-        Submit
-      </button>
+      <button className='form-btn mt-2'>Submit</button>
     </form>
   )
 }

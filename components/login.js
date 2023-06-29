@@ -34,7 +34,7 @@ const LoginPage = () => {
     <form className='register' onSubmit={handleClick}>
       <h1 className='header'>Login To Your Account</h1>
       <p className='text-center text-[18px]'>
-        Don't have an account?
+        Don&lsquo;t have an account?{' '}
         <Link href='/register'>
           <span className='text-accentPrimary'>Create Account</span>
         </Link>

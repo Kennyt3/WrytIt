@@ -16,6 +16,10 @@ const HomePage = () => {
           <h1>Go to sign in</h1>
         </>
       )}
+      <div className='bloghome'>
+        <h1>Welcome to WrytIt</h1>
+        <p>Discover, Create and Share your stories</p>
+      </div>
     </div>
   )
 }

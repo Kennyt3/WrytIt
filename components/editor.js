@@ -17,7 +17,7 @@ const Editor = ({}) => {
         // console.log(quill.getContents())
       })
     }
-  }, [quill])
+  }, [quill, setContent])
 
   return (
     <div className='content'>

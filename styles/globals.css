@@ -128,3 +128,7 @@ form.post button {
   text-transform: uppercase;
   /* margin: 200px auto 0 auto; */
 }
+
+.bloghome {
+  margin-top: 30px;
+}

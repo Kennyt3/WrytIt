@@ -20,7 +20,7 @@ const RegisterPage = () => {
     <form className='login px-3' onSubmit={handleClick}>
       <h1 className='header'>Create New Account</h1>
       <p className='text-center text-[18px]'>
-        Already have an account? &nbsp;
+        Already have an account?
         <Link href='/login'>
           <span className='text-[#FF6B6B]'>Login</span>
         </Link>

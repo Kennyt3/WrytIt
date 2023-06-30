@@ -24,10 +24,10 @@ const HomePage = () => {
             <h1>Unleash Your Creativity and Share Your Stories with WrytIt</h1>
             <p>
               WrytIt empowers you to be the author of your own narrative.
-              Whether you're an aspiring writer, a seasoned blogger, or someone
-              who loves to explore the world through captivating stories, our
-              app provides the perfect platform to express yourself, connect
-              with others, and inspire a global community.
+              Whether you&lsquo;re an aspiring writer, a seasoned blogger, or
+              someone who loves to explore the world through captivating
+              stories, our app provides the perfect platform to express
+              yourself, connect with others, and inspire a global community.
             </p>
           </div>
           <div>
@@ -44,11 +44,12 @@ const HomePage = () => {
                 diverse range of genres, topics, and perspectives. Explore the
                 latest trends, discover hidden gems, and dive into
                 thought-provoking articles created by passionate writers. With
-                WrytIt, you'll always find fresh and engaging content to feed
-                your curiosity and inspire your own creative endeavors. Step
-                into a world where imagination knows no bounds. Explore a vast
-                collection of thought-provoking articles, fascinating personal
-                journeys, and inspiring anecdotes from writers around the globe.
+                WrytIt, you&lsquo;ll always find fresh and engaging content to
+                feed your curiosity and inspire your own creative endeavors.
+                Step into a world where imagination knows no bounds. Explore a
+                vast collection of thought-provoking articles, fascinating
+                personal journeys, and inspiring anecdotes from writers around
+                the globe.
               </p>{' '}
             </div>
             <div>
@@ -61,9 +62,10 @@ const HomePage = () => {
                 you to craft visually stunning blog posts with ease. From
                 writing and formatting to adding multimedia elements such as
                 images, videos, and interactive widgets, we provide all the
-                tools you need to make your stories stand out. Whether it's a
-                heartfelt memoir, a travel diary, or an insightful analysis,
-                WrytIt empowers you to bring your unique vision to life.
+                tools you need to make your stories stand out. Whether
+                it&lsquo;s a heartfelt memoir, a travel diary, or an insightful
+                analysis, WrytIt empowers you to bring your unique vision to
+                life.
               </p>
             </div>
             <div>
@@ -72,10 +74,10 @@ const HomePage = () => {
                 Join a community of like-minded individuals who share your
                 passion for writing and self-expression. Engage in lively
                 discussions, exchange feedback, and gain valuable insights from
-                fellow bloggers, readers, and industry experts. Whether you're
-                seeking inspiration, advice, or collaboration opportunities, our
-                community is here to support and encourage your growth as a
-                writer.
+                fellow bloggers, readers, and industry experts. Whether
+                you&lsquo;re seeking inspiration, advice, or collaboration
+                opportunities, our community is here to support and encourage
+                your growth as a writer.
               </p>
             </div>
             <div>
@@ -93,7 +95,7 @@ const HomePage = () => {
               <h4>Seamless Mobile Experience</h4>
               <p>
                 Access your blog and stay connected on the go with our
-                responsive and user-friendly mobile app. Whether you're
+                responsive and user-friendly mobile app. Whether you&lsquo;re
                 commuting, relaxing at a coffee shop, or embarking on a new
                 adventure, you can effortlessly write, edit, and publish your
                 blog posts right from your smartphone or tablet. Your creativity
@@ -107,9 +109,9 @@ const HomePage = () => {
                 Start your journey as a blogger or continue your existing one
                 with WrytIt. Unlock the power of self-expression, connect with a
                 vibrant community, and share your stories with the world.
-                Whether you're an avid reader, a passionate writer, or simply
-                someone who appreciates the beauty of words, our app is your
-                platform for inspiration, connection, and limitless
+                Whether you&lsquo;re an avid reader, a passionate writer, or
+                simply someone who appreciates the beauty of words, our app is
+                your platform for inspiration, connection, and limitless
                 storytelling. Sign up today and let your voice be heard!
               </p>
             </div>

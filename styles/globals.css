@@ -46,6 +46,10 @@ input:focus {
   align-items: center;
 }
 
+.footer {
+  min-height: 70px;
+}
+
 form.login,
 form.register {
   width: 400px;

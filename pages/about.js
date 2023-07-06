@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
+import AboutPage from '@/components/about'
 
 export default function Register() {
   return (
@@ -18,7 +19,9 @@ export default function Register() {
       </Head>
       <div className=''>
         <Header />
-        <main className='main'></main>
+        <main className='main'>
+          <AboutPage />
+        </main>
         <Footer />
       </div>
     </>

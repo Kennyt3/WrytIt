@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useContextValue } from './context/userContext'
 const RegisterPage = () => {
   const [lastName, setLastName] = useState('')
   const [firstName, setFirstName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassWord] = useState('')
+  const { loggedIn, setUserInfo, setLoggedIn } = useContextValue()
+  const router = useRouter()
   const handleClick = async (e) => {
     e.preventDefault()
     const response = await fetch('/api/register', {
@@ -14,6 +18,14 @@ const RegisterPage = () => {
         'Content-Type': 'application/json',
       },
     })
+    if (response.ok) {
+      response.json().then((userInfo) => {
+        setUserInfo(userInfo)
+        setLoggedIn(true)
+      })
+    } else {
+      alert('wrong credentials')
+    }
   }
 
   return (

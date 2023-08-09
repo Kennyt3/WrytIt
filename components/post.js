@@ -12,16 +12,21 @@ const Post = () => {
   const router = useRouter()
 
   const createPost = async (e) => {
-    ev.preventDefault()
+    e.preventDefault()
     const data = new FormData()
-    data.set('title', title)
-    data.set('summary', summary)
-    data.set('file', files[0])
+    data.append('title', title)
+    data.append('summary', summary)
+    data.append('file', files[0])
+    data.append('content', content)
     const response = await fetch('/api/post', {
       method: 'POST',
-      body: { data, content: content },
+      body: data,
       credentials: 'include',
     })
+
+    if (response.ok) {
+      router.push('/')
+    }
   }
   return (
     <form onSubmit={createPost} className='post'>

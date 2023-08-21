@@ -2,8 +2,22 @@ import Head from 'next/head'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import AboutPage from '@/components/about'
+import Menubar from '@/components/menubar'
+import { useContextValue } from '@/context/userContext'
 
 export default function Register() {
+  const { showMenu, setShowMenu } = useContextValue()
+  // useEffect(() => {
+  //   const func = () => setShowMenu(false)
+  //   if (typeof window !== 'undefined') {
+  //     window.addEventListener('resize', func)
+  //   }
+  //   func()
+
+  //   return () => {
+  //     window.removeEventListener('resize', func)
+  //   }
+  // })
   return (
     <>
       <Head>
@@ -17,13 +31,22 @@ export default function Register() {
           content='Blog app to help take your blog writing skills to a whole new level'
         />
       </Head>
-      <div className=''>
-        <Header />
-        <main className='main'>
-          <AboutPage />
-        </main>
-        <Footer />
-      </div>
+      {showMenu ? (
+        <div>
+          <Header />
+          <main className='main'>
+            <Menubar />
+          </main>
+        </div>
+      ) : (
+        <div>
+          <Header />
+          <main className='main'>
+            <AboutPage />{' '}
+          </main>
+          <Footer />
+        </div>
+      )}
     </>
   )
 }

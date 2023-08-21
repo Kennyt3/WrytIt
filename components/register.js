@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useContextValue } from './context/userContext'
+import { useContextValue } from '../context/userContext'
 const RegisterPage = () => {
   const [lastName, setLastName] = useState('')
   const [firstName, setFirstName] = useState('')

@@ -27,9 +27,6 @@ export default async function handler(req, res) {
           if (err) throw err
           res.cookie('token', token)
         }
-        // {
-        //   expiresIn: 600000,
-        // }
       ),
         res.json({
           name: userDoc.firstName,
@@ -39,24 +36,3 @@ export default async function handler(req, res) {
     }
   }
 }
-
-// if (passed) {
-//   res.json({
-//     token: jwt.sign(
-//       { username: userDoc.username, admin: passed },
-//       secret
-//       // (err, token) => {
-//       //   if (err) throw err
-//       //   res.cookie('token', token).json({
-//       //     id: userDoc._id,
-//       //     username: userDoc.username,
-//       //     email,
-//       //   })
-//       // }
-//     ),
-//     admin: passed,
-//     username: userDoc.username,
-//   })
-// } else {
-//   res.status(400).json('wrong credentials')
-// }

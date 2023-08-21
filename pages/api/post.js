@@ -1,8 +1,6 @@
 import nc from 'next-connect'
-import onError from '../../common/errormiddleware'
 import multer from 'multer'
 import path from 'path'
-// import { executeQuery } from '../../../config/db'
 
 export const config = {
   api: {
@@ -32,7 +30,12 @@ const handler = nc({
 })
   .use(upload.single('file'))
   .post((req, res) => {
-    res.status(201).json({ body: req.body, file: req.file })
+    const { originalname, path } = req.file
+    // const parts = originalname.split('.')
+    // const ext = parts[parts.length - 1]
+    // const newPath = path + '.' + ext
+    // fs.renameSync(path, newPath)
+    res.status(201).json({ body: req.body, file: req.file, newPath: path })
   })
 
 export default handler

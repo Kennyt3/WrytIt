@@ -1,6 +1,6 @@
 import 'react-quill/dist/quill.snow.css'
 import dynamic from 'next/dynamic'
-import { useContextValue } from './context/userContext'
+import { useContextValue } from '../context/userContext'
 import { useEffect, useState } from 'react'
 
 const Editor = ({}) => {

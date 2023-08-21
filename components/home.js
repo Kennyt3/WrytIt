@@ -1,24 +1,12 @@
 import React, { useEffect } from 'react'
-import { useContextValue } from './context/userContext'
+import { useContextValue } from '../context/userContext'
 import Image from 'next/image'
 import heroImage from '../public/img/hero.jpg'
 const HomePage = () => {
-  const { loggedIn, userInfo } = useContextValue()
-  // useEffect(() => {
-  //   console.log(loggedIn, userInfo)
-  // }, [loggedIn, userInfo])
+  const { showMenu } = useContextValue()
   return (
     <div>
-      {/* {loggedIn ? (
-        <>
-          <h1>Congrats, signed in</h1>
-        </>
-      ) : (
-        <>
-          <h1>Go to sign in</h1>
-        </>
-      )} */}
-      <div className='bloghome'>
+      <div>
         <div className='bloghero'>
           <div className='blogherotext'>
             <h1>Unleash Your Creativity and Share Your Stories with WrytIt</h1>

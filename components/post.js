@@ -2,7 +2,7 @@ import React from 'react'
 import Editor from './editor'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
-import { useContextValue } from './context/userContext'
+import { useContextValue } from '../context/userContext'
 
 const Post = () => {
   const [title, setTitle] = useState('')
@@ -23,10 +23,12 @@ const Post = () => {
       body: data,
       credentials: 'include',
     })
+    const j = await response.json()
+    console.log(j.file.destination)
 
-    if (response.ok) {
-      router.push('/')
-    }
+    // if (response.ok) {
+    //   router.push('/')
+    // }
   }
   return (
     <form onSubmit={createPost} className='post'>

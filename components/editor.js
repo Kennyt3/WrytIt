@@ -1,7 +1,7 @@
 import { useQuill } from 'react-quilljs'
 import 'quill/dist/quill.snow.css'
 import { useEffect } from 'react'
-import { useContextValue } from './context/userContext'
+import { useContextValue } from '../context/userContext'
 
 const Editor = ({}) => {
   const { quill, quillRef } = useQuill()

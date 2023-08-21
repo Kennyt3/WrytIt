@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useContextValue } from './context/userContext'
+import { useContextValue } from '../context/userContext'
 import Image from 'next/image'
 import heroImage from '../public/img/hero.jpg'
 const AboutPage = () => {

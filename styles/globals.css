@@ -22,13 +22,45 @@ input:focus {
 
 .navbar {
   min-width: 500px;
+  @media (max-width: 900px) {
+    display: none;
+  }
+}
+.menubar {
+  width: 100%;
+  height: 80vh;
+  background-color: white;
+  @media (min-width: 900px) {
+    display: none;
+  }
+}
+.menu {
+  @media (min-width: 900px) {
+    display: none;
+  }
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  height: 100%;
+}
+
+.menu-list li {
+  font-size: 20px;
 }
 
 .nav-list {
   display: flex;
-  gap: 15px;
+  gap: 5px;
   justify-content: space-between;
   align-items: center;
+  @media (min-width: 900px) {
+    gap: 15px;
+  }
 }
 
 .containerm {
@@ -44,11 +76,12 @@ input:focus {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media (min-width: 900px) {
+  }
 }
 
 .footer {
   min-height: 70px;
-  margin-top: 50px;
 }
 
 form.login,
@@ -143,13 +176,11 @@ form.post button {
   gap: 30px;
   justify-content: space-between;
   align-items: center;
-  /* background-color: red; */
   margin-top: 120px;
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
 }
-
-.bloghome {
-}
-
 .blogherotext {
   text-align: start;
   max-width: 500px;

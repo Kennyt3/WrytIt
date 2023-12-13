@@ -41,9 +41,7 @@ export default function Register() {
       ) : (
         <div>
           <Header />
-          <main className='main'>
-            <AboutPage />{' '}
-          </main>
+          <main className='main'>{/* <AboutPage />{' '} */}</main>
           <Footer />
         </div>
       )}

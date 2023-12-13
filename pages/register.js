@@ -21,7 +21,7 @@ export default function Register() {
         <main className='main'>
           <RegisterPage />
         </main>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </>
   )

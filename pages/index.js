@@ -44,7 +44,7 @@ export default function Home() {
           <main className='main'>
             <HomePage />{' '}
           </main>
-          <Footer />
+          {/* <Footer /> */}
         </div>
       )}
     </>

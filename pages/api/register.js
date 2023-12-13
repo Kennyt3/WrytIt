@@ -26,6 +26,7 @@ export default async function handler(req, res) {
       userDoc.save()
       console.log(userDoc)
       res.status(200).json(userDoc)
+      res.status(400).json('not allowed')
     } catch (e) {
       res.status(500).json(e)
       console.log(UserModel)

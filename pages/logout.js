@@ -21,7 +21,7 @@ export default function Logout() {
         <main className='main'>
           <h1>You are logged out</h1>
         </main>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </>
   )

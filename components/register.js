@@ -7,6 +7,8 @@ const RegisterPage = () => {
   const [firstName, setFirstName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassWord] = useState('')
+  const [userDeets, setUserDeets] = useState({})
+  const [errMsg, setErrMsg] = useState('join')
   const { loggedIn, setUserInfo, setLoggedIn } = useContextValue()
   const router = useRouter()
   const handleClick = async (e) => {
@@ -22,9 +24,14 @@ const RegisterPage = () => {
       response.json().then((userInfo) => {
         setUserInfo(userInfo)
         setLoggedIn(true)
+        setErrMsg('No error message')
       })
     } else {
-      alert('wrong credentials')
+      setErrMsg('User Already exists')
+    }
+
+    if (loggedIn) {
+      router.push('/')
     }
   }
 
@@ -77,6 +84,7 @@ const RegisterPage = () => {
         onChange={(e) => setPassWord(e.target.value)}
         className='inp'
       />
+      <p className='text-red-500'>{errMsg}</p>
       <button className='form-btn mt-3'>Submit</button>
     </form>
   )

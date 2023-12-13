@@ -19,7 +19,7 @@ const AboutPage = () => {
         </>
       )} */}
       <div className='about'>
-        <h4>About Us</h4>{' '}
+        <h4>About Us</h4>
         <p>
           WrytIt is more than just a blogging platform; it's a community of
           passionate writers and readers who believe in the power of

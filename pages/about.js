@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
-// import AboutPage from '@/components/about'
+import AboutPage from '@/components/about'
 import Menubar from '@/components/menubar'
 import { useContextValue } from '@/context/userContext'
 

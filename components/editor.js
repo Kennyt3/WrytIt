@@ -22,7 +22,6 @@ const Editor = ({}) => {
   return (
     <div className='content'>
       <div ref={quillRef}></div>
-      <p>{content}</p>
     </div>
   )
 }

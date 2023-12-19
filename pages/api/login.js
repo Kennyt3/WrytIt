@@ -20,17 +20,16 @@ export default async function handler(req, res) {
     const passed = bcrypt.compareSync(password, userDoc.password)
     if (passed) {
       jwt.sign(
-        { firstname: userDoc.firstName, admin: passed },
+        { firstname: userDoc.firstName, admin: passed, id: userDoc._id },
         secret,
         {},
         (err, token) => {
           if (err) throw err
-          res.cookie('token', token)
+          res
+            .cookie('token', token)
+            .json({ id: userDoc._id, firstname: userDoc.firstName })
         }
-      ),
-        res.json({
-          name: userDoc.firstName,
-        })
+      )
     } else {
       res.status(400).json('Invalid Password')
     }

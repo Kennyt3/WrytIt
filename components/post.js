@@ -39,13 +39,13 @@ const Post = () => {
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
-      <input
+      {/* <input
         type='summary'
         placeholder='Summary'
         key='sur'
         value={summary}
         onChange={(e) => setSummary(e.target.value)}
-      />
+      /> */}
       <input type='file' onChange={(e) => setFiles(e.target.files)} key='go' />
       <Editor key='quill' />
       <button style={{ marginTop: '5px' }}>Create post</button>

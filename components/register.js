@@ -3,35 +3,43 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useContextValue } from '../context/userContext'
 const RegisterPage = () => {
-  const [lastName, setLastName] = useState('')
-  const [firstName, setFirstName] = useState('')
+  const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassWord] = useState('')
   const [userDeets, setUserDeets] = useState({})
-  const [errMsg, setErrMsg] = useState('join')
+  const [errMsg, setErrMsg] = useState('')
   const { loggedIn, setUserInfo, setLoggedIn } = useContextValue()
   const router = useRouter()
   const handleClick = async (e) => {
     e.preventDefault()
-    const response = await fetch('/api/register', {
-      method: 'POST',
-      body: JSON.stringify({ firstName, lastName, password, email }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-    if (response.ok) {
-      response.json().then((userInfo) => {
+
+    try {
+      const response = await fetch('/api/register', {
+        method: 'POST',
+        body: JSON.stringify({ name, password, email }),
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+      })
+
+      if (response.ok) {
+        const userInfo = await response.json()
         setUserInfo(userInfo)
         setLoggedIn(true)
         setErrMsg('No error message')
-      })
-    } else {
-      setErrMsg('User Already exists')
-    }
 
-    if (loggedIn) {
-      router.push('/')
+        // Redirect after successful registration
+        // if (registered) {
+        //   router.push('/post');
+        // }
+      } else {
+        setErrMsg('User Already exists')
+      }
+
+      console.log(response)
+      console.log(loggedIn)
+    } catch (error) {
+      console.error('Error:', error.message)
+      setErrMsg('Network error occurred')
     }
   }
 
@@ -44,24 +52,14 @@ const RegisterPage = () => {
           <span className='text-[#FF6B6B]'>Login</span>
         </Link>
       </p>
-      <label className='label'>First name</label>
+      <label className='label'>Name</label>
       <input
         type='text'
         placeholder='Enter username'
         autoComplete='on'
-        value={firstName}
+        value={name}
         required
-        onChange={(e) => setFirstName(e.target.value)}
-        className='inp'
-      />
-      <label className='label'>Last name</label>
-      <input
-        type='text'
-        placeholder='Enter username'
-        autoComplete='on'
-        value={lastName}
-        required
-        onChange={(e) => setLastName(e.target.value)}
+        onChange={(e) => setName(e.target.value)}
         className='inp'
       />
       <label className='label'> Email</label>
@@ -84,7 +82,6 @@ const RegisterPage = () => {
         onChange={(e) => setPassWord(e.target.value)}
         className='inp'
       />
-      <p className='text-red-500'>{errMsg}</p>
       <button className='form-btn mt-3'>Submit</button>
     </form>
   )

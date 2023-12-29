@@ -1,12 +1,15 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useContextValue } from '../context/userContext'
+import Cookies from 'universal-cookie'
 
 const LoginPage = () => {
   const [email, setEmail] = useState('')
   const [password, setPassWord] = useState('')
-  const { loggedIn, setUserInfo, setLoggedIn } = useContextValue()
+  // const [userInfo, setUserInfo] = useState('')
+  const [token, setToken] = useState('')
+  const { loggedIn, setUserInfo, userInfo, setLoggedIn } = useContextValue()
   const router = useRouter()
   const handleClick = async (e) => {
     e.preventDefault()
@@ -24,11 +27,27 @@ const LoginPage = () => {
     } else {
       alert('wrong credentials')
     }
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok')
+    }
   }
 
   if (loggedIn) {
     router.push('/')
   }
+
+  useEffect(() => {
+    const cookies = new Cookies()
+    const token = cookies.get('token')
+    if (token) {
+      setToken(token)
+    }
+  }, [userInfo])
+
+  useEffect(() => {
+    console.log(token)
+  }, [token])
 
   return (
     <form className='register' onSubmit={handleClick}>

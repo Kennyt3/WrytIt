@@ -23,7 +23,7 @@ export default async function handler(req, res) {
         email,
         password: bcrypt.hashSync(password, salt),
       })
-      userDoc.save()
+      await userDoc.save()
       console.log(userDoc)
       res.json(userDoc)
     } catch (e) {

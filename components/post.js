@@ -49,7 +49,7 @@ const Post = () => {
     setName(userInfo.name)
   }, [])
   useEffect(() => {
-    console.log(files[0])
+    // console.log(files[0])
   }, [files])
   return (
     <form onSubmit={createPost} className='post'>

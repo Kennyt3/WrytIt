@@ -23,7 +23,8 @@ const secret = 'asdfe45we45w345wegw345werjktjwertkj'
 const upload = multer({
   storage: multer.diskStorage({
     destination: (req, file, cb) => {
-      cb(null, path.join(process.cwd(), 'public', 'uploads'))
+      cb(null, '/tmp/my-uploads')
+      // cb(null, path.join(process.cwd(), 'public', 'uploads'))
     },
     filename: (req, file, cb) => {
       cb(null, file.originalname)
@@ -31,6 +32,7 @@ const upload = multer({
   }),
 })
 
+// join('/tmp', 'data.json')
 const handler = nc({
   onError: (err, req, res, next) => {
     console.error(err.stack)

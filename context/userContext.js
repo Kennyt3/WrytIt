@@ -5,6 +5,7 @@ export const UserContext = createContext({})
 const UserProvider = ({ children }) => {
   const [userInfo, setUserInfo] = useState({})
   const [showMenu, setShowMenu] = useState(false)
+  const [token, setToken] = useState('')
   const [loggedIn, setLoggedIn] = useState(false)
   const [content, setContent] = useState('')
   const router = useRouter()
@@ -41,6 +42,8 @@ const UserProvider = ({ children }) => {
         setLoggedIn,
         content,
         setContent,
+        token,
+        setToken,
       }}
     >
       {children}
